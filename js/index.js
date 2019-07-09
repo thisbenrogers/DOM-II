@@ -79,6 +79,11 @@ p.forEach(x =>
 );
 
 // resize: blur images even more when window is resized
+let resizeTimer;
 window.addEventListener("resize", function () {
   img.forEach(x => (x.style.filter = "blur(20px)"));
+  clearTimeout(resizeTimer);
+  resizeTimer = setTimeout(function () {
+    img.forEach(x => (x.style.filter = "blur(0px)"));
+  }, 250);
 });
